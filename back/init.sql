@@ -1,0 +1,2 @@
+-- MDD Database initialization
+-- Tables will be auto-created by Hibernate later
