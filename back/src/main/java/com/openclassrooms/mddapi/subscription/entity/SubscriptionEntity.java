@@ -27,7 +27,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-class SubscriptionId implements Serializable {
+public class SubscriptionId implements Serializable {
   private UUID userId;
   private UUID topicId;
 }
