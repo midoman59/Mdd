@@ -29,12 +29,12 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     var topic = topicRepository.findById(topicId)
         .orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND, "Topic not found"));
 
-    SubscriptionEntity subscription = SubscriptionEntity.builder()
-        .id(new SubscriptionId(userId, topicId))
-        .user(user)
-        .topic(topic)
-        .isSubscribed(true)
-        .build();
+    SubscriptionEntity subscription = new SubscriptionEntity(
+        new SubscriptionId(userId, topicId),
+        user,
+        topic,
+        true
+    );
 
     subscriptionRepository.save(subscription);
   }

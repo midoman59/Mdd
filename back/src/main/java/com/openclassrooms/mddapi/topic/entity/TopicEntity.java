@@ -6,19 +6,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "topics")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class TopicEntity extends BaseEntity {
 
   @NotBlank(message = "Title is required")
@@ -28,4 +18,17 @@ public class TopicEntity extends BaseEntity {
   @NotBlank(message = "Description is required")
   @Column(name = "description", nullable = false, columnDefinition = "TEXT")
   private String description;
+
+  public TopicEntity() {}
+
+  public TopicEntity(String title, String description) {
+    this.title = title;
+    this.description = description;
+  }
+
+  public String getTitle() { return title; }
+  public void setTitle(String title) { this.title = title; }
+
+  public String getDescription() { return description; }
+  public void setDescription(String description) { this.description = description; }
 }

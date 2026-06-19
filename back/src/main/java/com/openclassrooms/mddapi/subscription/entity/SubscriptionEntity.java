@@ -1,13 +1,9 @@
 package com.openclassrooms.mddapi.subscription.entity;
 
-import java.io.Serializable;
-import java.util.UUID;
-
 import com.openclassrooms.mddapi.topic.entity.TopicEntity;
 import com.openclassrooms.mddapi.user.entity.UserDetailEntity;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -15,30 +11,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@Embeddable
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-public class SubscriptionId implements Serializable {
-  private UUID userId;
-  private UUID topicId;
-}
 
 @Entity
 @Table(name = "subscriptions")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class SubscriptionEntity {
 
   @EmbeddedId
@@ -56,4 +31,25 @@ public class SubscriptionEntity {
 
   @Column(name = "is_subscribed", nullable = false)
   private Boolean isSubscribed;
+
+  public SubscriptionEntity() {}
+
+  public SubscriptionEntity(SubscriptionId id, UserDetailEntity user, TopicEntity topic, Boolean isSubscribed) {
+    this.id = id;
+    this.user = user;
+    this.topic = topic;
+    this.isSubscribed = isSubscribed;
+  }
+
+  public SubscriptionId getId() { return id; }
+  public void setId(SubscriptionId id) { this.id = id; }
+
+  public UserDetailEntity getUser() { return user; }
+  public void setUser(UserDetailEntity user) { this.user = user; }
+
+  public TopicEntity getTopic() { return topic; }
+  public void setTopic(TopicEntity topic) { this.topic = topic; }
+
+  public Boolean getIsSubscribed() { return isSubscribed; }
+  public void setIsSubscribed(Boolean isSubscribed) { this.isSubscribed = isSubscribed; }
 }

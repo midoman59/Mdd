@@ -9,8 +9,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -20,4 +18,19 @@ public class TopicDTO {
   private String description;
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
+
+  public UUID getId() { return id; }
+  public void setId(UUID id) { this.id = id; }
+
+  public String getTitle() { return title; }
+  public void setTitle(String title) { this.title = title; }
+
+  public String getDescription() { return description; }
+  public void setDescription(String description) { this.description = description; }
+
+  public LocalDateTime getCreatedAt() { return createdAt; }
+  public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+
+  public LocalDateTime getUpdatedAt() { return updatedAt; }
+  public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
 }
