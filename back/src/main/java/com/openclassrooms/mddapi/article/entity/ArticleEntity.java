@@ -2,6 +2,7 @@ package com.openclassrooms.mddapi.article.entity;
 
 import java.util.List;
 
+import com.openclassrooms.mddapi.comment.entity.CommentEntity;
 import com.openclassrooms.mddapi.topic.entity.TopicEntity;
 import com.openclassrooms.mddapi.user.entity.UserDetailEntity;
 import com.openclassrooms.mddapi.utils.entity.BaseEntity;
@@ -37,7 +38,7 @@ public class ArticleEntity extends BaseEntity {
   private UserDetailEntity author;
 
   @OneToMany(mappedBy = "article", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<ArticleEntity> comments;
+  private List<CommentEntity> comments;
 
   public ArticleEntity() {}
 
@@ -60,6 +61,6 @@ public class ArticleEntity extends BaseEntity {
   public UserDetailEntity getAuthor() { return author; }
   public void setAuthor(UserDetailEntity author) { this.author = author; }
 
-  public List<ArticleEntity> getComments() { return comments; }
-  public void setComments(List<ArticleEntity> comments) { this.comments = comments; }
+  public List<CommentEntity> getComments() { return comments; }
+  public void setComments(List<CommentEntity> comments) { this.comments = comments; }
 }

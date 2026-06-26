@@ -2,14 +2,15 @@ spring:
   application:
     name: mdd-api
   datasource:
-    url: jdbc:mysql://localhost:3306/mdd
-    username: ${USERNAME_MYSQL}
-    password: ${PASSWORD_MYSQL}
     driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${DB_USER:mdd_user}
+    password: ${DB_PASSWORD:mdd_password}
+    url: "jdbc:mysql://${DB_HOST:127.0.0.1}:${DB_PORT:3308}/${DB_NAME:mdd}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
   jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: update
-    show-sql: false
+    show-sql: true
     properties:
       hibernate:
         format_sql: true
@@ -19,7 +20,7 @@ server:
 
 app:
   jwt:
-    secret: ${JWT_SECRET}
+    secret: ${JWT_SECRET:your_super_secret_jwt_key_change_this_in_production}
     expiration: 3600000
 
 springdoc:
